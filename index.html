@@ -1,112 +1,167 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Davi Rocha - Portfólio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davi Rocha | Portfólio</title>
+    
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte padrão do sistema, pode mudar */
+        }
 
-		<div id="wrapper">
+        body {
+            /* Removemos o background-color azul sólido para o vídeo aparecer */
+            background-color: transparent; 
+            color: #ffffff; /* Texto branco */
+            height: 100vh;
+            overflow-x: hidden; /* Evita rolagem lateral */
+        }
 
-				<header id="header" class="alt">
-						<a href="index.html" class="logo"><strong>Davi Rocha</strong> <span>Portfolio</span></a>
-					</header>
+        /* --- CONFIGURAÇÃO DO VÍDEO DE FUNDO --- */
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -2; /* Fica atrás de tudo */
+            object-fit: cover; /* Cobre a tela sem distorcer */
+        }
 
-				<section id="banner" class="major">
-						<div class="inner">
-							<header class="major">
-								<h1>Davi Rocha</h1>
-							</header>
-							<div class="content">
-								<p>Jornalista | Videomaker | Geek & Tech | Niterói - RJ<br />
-								Transformando ideias em narrativas visuais.</p>
-								<ul class="actions">
-									<li><a href="#menu-editorias" class="button next scrolly">Ver Editorias</a></li>
-								</ul>
-							</div>
-						</div>
-					</section>
+        /* Máscara escura sobre o vídeo para o texto ficar legível */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 26, 46, 0.6); /* Azul escuro com 60% de opacidade */
+            z-index: -1; /* Fica em cima do vídeo, mas atrás do conteúdo */
+        }
 
-				<div id="main">
+        /* --- SEU LAYOUT ORIGINAL --- */
+        
+        /* Barra de navegação superior */
+        .navbar {
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
 
-						<section id="menu-editorias" class="tiles">
-								
-								<article>
-									<span class="image">
-										<img src="images/esporte.jpg" alt="" />
-									</span>
-									<header class="major">
-										<h3><a href="esporte.html" class="link">Esporte & Ação</a></h3>
-										<p>Ciclo Olímpico, JERJ e JEBs</p>
-									</header>
-								</article>
+        .brand-box {
+            background-color: #ffffff;
+            color: #121a2e; /* Cor escura para o texto dentro da caixa branca */
+            padding: 5px 10px;
+            margin-right: 10px;
+            font-weight: 800;
+        }
 
-								<article>
-									<span class="image">
-										<img src="images/cultura.jpg" alt="" />
-									</span>
-									<header class="major">
-										<h3><a href="cultura.html" class="link">Cultura & Nightlife</a></h3>
-										<p>Rio Scenarium, Samba e Shows</p>
-									</header>
-								</article>
+        /* Conteúdo principal centralizado verticalmente */
+        .hero-section {
+            height: 80vh; /* Ocupa 80% da altura da tela */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 10%; /* Alinhado à esquerda como na sua imagem */
+            padding-right: 10%;
+        }
 
-								<article>
-									<span class="image">
-										<img src="images/geek.PNG" alt="" />
-									</span>
-									<header class="major">
-										<h3><a href="geek.html" class="link">Geek & Tech</a></h3>
-										<p>CCXP, Eventos e Cinema</p>
-									</header>
-								</article>
+        h1 {
+            font-size: 4rem; /* Tamanho grande para o nome */
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
 
-								<article>
-									<span class="image">
-										<img src="images/pessoal.jpg" alt="" />
-									</span>
-									<header class="major">
-										<h3><a href="pessoal.html" class="link">Crônicas de Niterói</a></h3>
-										<p>Blog e Projetos Autorais</p>
-									</header>
-								</article>
-							</section>
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            margin-bottom: 30px;
+        }
 
-						<section id="two">
-								<div class="inner">
-									<header class="major">
-										<h2>Sobre Mim</h2>
-									</header>
-									<p>Jornalista e Videomaker com experiência em órgãos públicos (Secretaria de Esporte e Lazer), cobertura de grandes eventos e projetos culturais. Foco em produção de conteúdo digital ágil e estético.</p>
-								</div>
-							</section>
+        .subtitle-row {
+            display: flex;
+            justify-content: space-between; /* Espalha o texto e o botão */
+            align-items: flex-start;
+            flex-wrap: wrap; /* Quebra linha em telas menores */
+            gap: 20px;
+        }
 
-					</div>
+        .roles {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            max-width: 600px;
+        }
 
-				<footer id="footer">
-						<div class="inner">
-							<ul class="icons">
-								<li><a href="https://instagram.com" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="mailto:davierocha11@gmail.com" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
-							</ul>
-							<ul class="copyright">
-								<li>&copy; Davi Rocha</li>
-							</ul>
-						</div>
-					</footer>
+        /* Botão "Ver Editorias" */
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 30px;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
 
-			</div>
+        .btn-outline:hover {
+            background-color: #ffffff;
+            color: #121a2e;
+        }
 
-		<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+        .arrow {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
 
-	</body>
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop playsinline id="myVideo">
+        <source src="background.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos em HTML5.
+    </video>
+
+    <div class="video-overlay"></div>
+
+    <nav class="navbar">
+        <div class="brand-box">DAVI ROCHA</div>
+        <div>PORTFOLIO</div>
+    </nav>
+
+    <main class="hero-section">
+        <h1>Davi Rocha</h1>
+        
+        <div class="divider"></div>
+
+        <div class="subtitle-row">
+            <div class="roles">
+                JORNALISTA | VIDEOMAKER | GEEK & TECH | NITERÓI - RJ<br>
+                TRANSFORMANDO IDEIAS EM NARRATIVAS VISUAIS.
+            </div>
+
+            <a href="#" class="btn-outline">
+                Ver Editorias <span class="arrow">→</span>
+            </a>
+        </div>
+    </main>
+
+</body>
 </html>
